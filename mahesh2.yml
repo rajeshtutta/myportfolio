@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maheshdeployment1
+  labels:
+    app: mahesh123
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mahesh123
+  template:
+    metadata:
+      labels:
+        app: mahesh123
+    spec:
+      containers:
+      - name: maheshcont1
+        image: mahesh2452/mahesh_portfolio:8
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service2
+spec:
+  selector:
+    app: mahesh123
+  ports:
+    - protocol: TCP
+      port: 8080        # Service port
+      targetPort: 8080 # Pod container port
+      nodePort: 30251
+  type: NodePort     # Default service typei
