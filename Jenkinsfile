@@ -6,7 +6,7 @@ pipeline {
         GIT_BRANCH     = "main"
 
         DOCKERHUB_USER = "rajeshtutta123"
-        IMAGE_NAME     = "rajeshportfolio"
+        IMAGE_NAME     = "rajeshtutta123/rajeshportfolio:6"
         IMAGE_TAG      = "${BUILD_NUMBER}"
 
         DOCKER_CREDS   = "dockerhub-cred"
@@ -38,7 +38,7 @@ pipeline {
             echo "ERROR: WAR file target/sample-webapp.war not found!"
             exit 1
         fi
-        docker build -t rajeshportfolio .
+        docker build -t rajeshtutta123/rajeshportfolio:6 .
         '''
     }
 }
