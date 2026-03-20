@@ -32,18 +32,16 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                sh """
-                # Ensure Dockerfile matches the WAR name 'devops-portfolio.war'
-                if [ ! -f target/devops-portfolio.war ]; then
-                    echo "ERROR: WAR file target/devops-portfolio.war not found!"
-                    exit 1
-                fi
-
-                docker build -t ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG} .
-                """
-            }
-        }
+    steps {
+        sh '''
+        if [ ! -f target/sample-webapp.war ]; then
+            echo "ERROR: WAR file target/sample-webapp.war not found!"
+            exit 1
+        fi
+        docker build -t rajeshportfolio .
+        '''
+    }
+}
 
         stage('DockerHub Login') {
             steps {
