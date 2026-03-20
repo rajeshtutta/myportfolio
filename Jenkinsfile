@@ -6,7 +6,7 @@ pipeline {
         GIT_BRANCH     = "main"
 
         DOCKERHUB_USER = "rajeshtutta123"
-        IMAGE_NAME     = "rajeshtutta123/rajeshportfolio:6"
+        IMAGE_NAME     = "rajeshportfolio"
         IMAGE_TAG      = "${BUILD_NUMBER}"
 
         DOCKER_CREDS   = "dockerhub-cred"
