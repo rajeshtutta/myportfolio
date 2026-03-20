@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPO       = "https://github.com/Mahesh1-code141/Mahesh_Portfolio.git"
+        GIT_REPO       = "https://github.com/rajeshtutta/myportfolio.git"
         GIT_BRANCH     = "main"
 
-        DOCKERHUB_USER = "mahesh2452"
-        IMAGE_NAME     = "mahesh_portfolio"
+        DOCKERHUB_USER = "rajeshtutta123"
+        IMAGE_NAME     = "rajeshportfolio"
         IMAGE_TAG      = "${BUILD_NUMBER}"
 
-        DOCKER_CREDS   = "Docker_CRED"
+        DOCKER_CREDS   = "dockerhub-cred"
 
-        CONTAINER_NAME = "mahesh_portfolio"
+        CONTAINER_NAME = "rajeshportfolio"
         HOST_PORT      = "2005"
         CONTAINER_PORT = "8080"
     }
@@ -60,7 +60,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh """
-                sed 's/IMAGE_TAG/${IMAGE_TAG}/g' k8s.yaml > mahesh2.yml
+                sed 's/IMAGE_TAG/${IMAGE_TAG}/g' k8s.yaml > rajeshportfolio.yml
                 kubectl apply -f mahesh2.yml
                 """
             }
