@@ -31,17 +31,13 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+       stage('Build Docker Image') {
     steps {
-        sh '''
-        if [ ! -f target/sample-webapp.war ]; then
-            echo "ERROR: WAR file target/sample-webapp.war not found!"
-            exit 1
-        fi
-        docker build -t rajeshtutta123/rajeshportfolio:6 .
-        '''
+        sh 'docker build -t rajeshtutta123/rajeshportfolio:${BUILD_NUMBER} .'
     }
 }
+
+
 
         stage('DockerHub Login') {
             steps {
@@ -56,10 +52,10 @@ pipeline {
         }
 
         stage('Push Image to DockerHub') {
-            steps {
-                sh "docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
-            }
-        }
+    steps {
+        sh 'docker push rajeshtutta123/rajeshportfolio:${BUILD_NUMBER}'
+    }
+}
 
         stage('Deploy Container') {
             steps {
