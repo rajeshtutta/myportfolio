@@ -11,11 +11,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <packaging>war</packaging>
 
 <build>
+    <finalName>sample-webapp</finalName>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <version>3.3.2</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
         </plugin>
     </plugins>
 </build>
